@@ -1,0 +1,71 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- Full Calendar -->
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Users</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Add a User</h4>
+                        <p class="text-muted m-b-30">Please enter user details.</p>
+                        <form action="/added" method="POST">
+                            <div class="form-group">
+                                <label>Name * </label>
+                                <input type="text" name="name" class="form-control" required placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>E-mail * </label>
+                                <input type="email" name="email" class="form-control" required placeholder="E-mail">
+                            </div>
+
+                            <div class="form-group">
+                                <label>User Group * </label>
+                                <input type="text" name="group" class="form-control" required placeholder="User Group">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" name="phone" class="form-control" placeholder="Phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Country</label>
+                                <input type="text" name="country" class="form-control" placeholder="Country">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <div>
+                                    <textarea name="address" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div>
+                                    <button type="submit" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-plus-circle"></i><span></span>&emsp;Add</button> &emsp;&emsp;
+                                    <a class="btn btn-primary waves-effect waves-light" href="/users" role="button"><i class="mdi mdi-arrow-left"></i><span></span>&emsp;All Users</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%- contentFor('FooterJs') %>
+            <!--Full calendar-->
+            <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+            <script src="public/plugins/moment/moment.js"></script>
+            <script src="public/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+            <script src="public/assets/pages/calendar-init.js"></script>

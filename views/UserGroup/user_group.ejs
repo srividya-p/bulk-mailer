@@ -1,0 +1,50 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- Full Calendar -->
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">User Groups</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">All User Groups</h4>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Group Name</th>
+                                    <th>Number of Users</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0; i<groups.length; i++){ %>
+                                <tr>
+                                    <td><%= i+1 %></td>
+                                    <td><%= groups[i].name %></td>
+                                    <td><%= groups[i].u_no %></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <%- contentFor('FooterJs') %>
+            <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+            <script src="public/plugins/moment/moment.js"></script>
+            <script src="public/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+            <script src="public/assets/pages/calendar-init.js"></script>

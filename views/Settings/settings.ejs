@@ -1,0 +1,83 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- Full Calendar -->
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<style>
+    .hidetext {
+        -webkit-text-security: disc;
+        /* Default */
+    }
+</style>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Settings</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Default Sender Email (currently <%- setting[0].default_email %>)</h4>
+                        <form action="/set" method="POST">
+                            <div class="form-group">
+                                <select name="email" class="form-control" required>
+                                    <option value='None'>None</option>
+                                    <% for(let i=0; i<smtp.length; i++) { %>
+                                    <option value="<%= smtp[i].email %>"><%= smtp[i].email %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div>
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light"><i
+                                            class="mdi mdi-checkbox-marked-circle-outline"></i><span></span>&emsp;Set As
+                                        Default</button>
+                                </div>
+                            </div>
+                        </form> <br> <br>
+                        <h4 class="mt-0 header-title">SMTP Settings</h4>
+                        <a class="btn btn-primary waves-effect waves-light" href="/add-email" role="button"><i
+                                class="mdi mdi-plus-circle"></i><span></span>&emsp;Add Sender Email</a> <br><br>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Sender Email</th>
+                                    <th>Password</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0; i<smtp.length; i++){ %>
+                                <tr>
+                                    <td><%= i+1 %></td>
+                                    <td><%= smtp[i].email %></td>
+                                    <td class='hidetext'><%= smtp[i].password %></td>
+                                    <td>
+                                        <a class="mdi mdi-lead-pencil" href="/update-email?id=<%- smtp[i]._id %>"></a>
+                                        <a class="mdi mdi-delete" href="/delete-email?id=<%- smtp[i]._id %>"></a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table> <br>
+                        <p>Please Provide Access to less Secure Apps for Sender Emails<br>
+                            <a href="https://myaccount.google.com/lesssecureapps" target="blank">Gmail Less Secure Apps <i class="mdi mdi-launch"></i><span></span></a>
+                        </p>
+                    </div>
+                </div>
+                <%- contentFor('FooterJs') %>
+                <!--Full calendar-->
+                <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+                <script src="public/plugins/moment/moment.js"></script>
+                <script src="public/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+                <script src="public/assets/pages/calendar-init.js"></script>

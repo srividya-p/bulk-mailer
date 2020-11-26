@@ -1,0 +1,100 @@
+<%- contentFor('HeaderCss') %>
+
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">New Campaign</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Add a new Campaign</h4>
+                        <p class="text-muted m-b-30">Please enter Campaign details.</p>
+                        
+                        <form action='/send' method="POST" id="ip-form" onsubmit="return checkBox()">
+                            <div class="form-group">
+                                <label>Name * </label>
+                                <input type="text" name="name" class="form-control" required placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Target Group(s) * </label>
+                                <div class="checkbox-group required">
+                                    <% for(let i=0; i<groups.length; i++) {%>
+                                    <input type="checkbox" name="checkbox[]" value="<%= groups[i].name %>">
+                                    <label><%= groups[i].name %></label> &emsp;
+                                    <% } %>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Sender E-mail * (You may add new Emails via the Settings Tab) </label>
+                                <select id="from_email" name="from_email" class="form-control" required>
+                                    <% for(let i=0; i<emails.length; i++) { %>
+                                    <option value="<%= emails[i].email %>"><%= emails[i].email %></option>
+                                    <% } %>
+                                </select> <br>
+                                <p>OR</p>
+                                <button type="button" onclick="useDefault('<%- settings[0].default_email %>')"
+                                    class="btn btn-info waves-effect waves-light">Use Default</button>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Subject * </label>
+                                <input type="text" name="subject" required class="form-control" placeholder="Subject">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Message</label>
+                                <div>
+                                    <textarea name="message" class="form-control" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div>
+                                    <button type="submit" class="btn btn-success waves-effect waves-light"><i
+                                            class="mdi mdi-email"></i><span></span>&emsp;Send Email</button>
+                                    &emsp;&emsp;
+                                    <a class="btn btn-primary waves-effect waves-light" href="/all" role="button"><i
+                                            class="mdi mdi-arrow-left"></i><span></span>&emsp;All Campaigns</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%- contentFor('FooterJs') %>
+
+            <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+            <script>
+                let useDefault = (defEmail) => {
+                    if (defEmail == 'None' || defEmail == 'none') {
+                        alert('You have not set a default Email Yet! You can do this via the Setting tabs.')
+                    } else {
+                        document.getElementById('from_email').value = defEmail
+                    }
+                }
+
+                function checkBox() {
+                    var form_data = new FormData(document.querySelector("form"));
+                    var checkboxes = new FormData(document.getElementById('ip-form'));
+                    if (!checkboxes.has("checkbox[]")) {
+                        alert("You must select at least one Target Group. If you can see none, Please add a new user First!");
+                        return false;
+                    }
+                    else {
+                        return true
+                    }
+                }
+            </script>

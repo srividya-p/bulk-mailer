@@ -1,0 +1,42 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- Full Calendar -->
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h6 class="page-title">Users</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h5>View User</h5>
+                        <div class="">
+                            <h6>Name <span class="badge badge-light"><%- user[0].name %></span></h6>
+                            <h6>Email <span class="badge badge-light"><%- user[0].email %></span></h6>
+                            <h6>Group <span class="badge badge-light"><%- user[0].group %></span></h6>
+                            <h6>Phone <span class="badge badge-light"><%- user[0].phone %></span></h6>
+                            <h6>Address <span class="badge badge-light"><%- user[0].address %></span></h6>
+                            <h6>Country <span class="badge badge-light"><%- user[0].country %></span></h6><br>    
+                            <a class="btn btn-primary waves-effect waves-light" href="/users" role="button"><i class="mdi mdi-arrow-left"></i><span></span>&emsp;Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- contentFor('FooterJs') %>
+            <!--Full calendar-->
+            <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+            <script src="public/plugins/moment/moment.js"></script>
+            <script src="public/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+            <script src="public/assets/pages/calendar-init.js"></script>

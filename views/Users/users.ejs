@@ -1,0 +1,58 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+<!-- Full Calendar -->
+<link href="public/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+
+<%- contentFor('body') %>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Users</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">All Users</h4>
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Group</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0; i<users.length; i++){ %>
+                                <tr>
+                                    <td><%= i+1 %></td>
+                                    <td><%= users[i].name %></td>
+                                    <td><%= users[i].email %></td>
+                                    <td><%= users[i].group %></td>
+                                    <td>
+                                        <a class="mdi mdi-eye" href="/view?id=<%- users[i]._id%>"></a>
+                                        <a class="mdi mdi-lead-pencil" href="/update?id=<%- users[i]._id%>"></a>
+                                        <a class="mdi mdi-delete" href="/users/delete?id=<%- users[i]._id%>&group=<%- users[i].group%>"></a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <%- contentFor('FooterJs') %>
+            <!--Full calendar-->
+            <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
+            <script src="public/plugins/moment/moment.js"></script>
+            <script src="public/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+            <script src="public/assets/pages/calendar-init.js"></script>

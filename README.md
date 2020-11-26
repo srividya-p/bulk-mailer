@@ -5,6 +5,8 @@ Bulk mailing application built using Express.js, ejs, Nodemailer and MongoDB
 ```
 > npm install
 ```
+followed by
+
 ```
 > npm start
 ```

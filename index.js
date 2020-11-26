@@ -25,6 +25,6 @@ app.use(expressLayouts);
 // Add Route file with app
 app.use('/', router); 
 
-http.listen(8000, function(){
-  console.log('listening on *:8000');
+http.listen(process.env.PORT, function(){
+  console.log('Listening on port '+process.env.PORT);
 });

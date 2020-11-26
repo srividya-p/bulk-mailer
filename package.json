@@ -4,7 +4,8 @@
   "description": "My Lexa Nodejs Template",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon index.js"
   },
   "author": "CODERTHEMES",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "ejs": "^2.6.1",
     "ejs-lint": "^0.3.0",
     "ejs-locals": "^1.0.2",
+    "env-cmd": "^10.1.0",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
     "express-flash-messages": "^0.1.1",

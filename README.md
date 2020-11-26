@@ -16,4 +16,5 @@ OR
 > npm run dev
 ```
 
+## Output Screenshots
 ![Screenshot from 2020-11-26 16-41-54](https://user-images.githubusercontent.com/74781344/100344825-70c82000-3007-11eb-8c8f-6084cfc1133e.png)

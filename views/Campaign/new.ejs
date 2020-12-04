@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">Add a new Campaign</h4>
                         <p class="text-muted m-b-30">Please enter Campaign details.</p>
-                        
+
                         <form action='/send' method="POST" id="ip-form" onsubmit="return checkBox()">
                             <div class="form-group">
                                 <label>Name * </label>
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label>Message</label>
                                 <div>
-                                    <textarea name="message" class="form-control" rows="4"></textarea>
+                                    <textarea name="message" id="message" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
 
@@ -97,4 +97,10 @@
                         return true
                     }
                 }
+            </script>
+
+            <script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
+            
+            <script>
+                CKEDITOR.replace('message');
             </script>

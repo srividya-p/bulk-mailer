@@ -30,21 +30,25 @@ const sendEmailAndUpdate = async (details) => {
         auth: {
             user: from[0].email,
             pass: from[0].password
-        }
+        },
+        pool: true, // use pooled connection
+        rateLimit: true, // enable to make sure we are limiting
+        maxConnections: 1, // set limit to 1 connection only
+        maxMessages: 10, // send 3 emails per second
     });
 
     var mailOptions = {
         from: from[0].email,
         to: to,
         subject: details.subject,
-        text: details.message
+        html: details.message
     };
 
     transporter.sendMail(mailOptions, async function (error, info) {
         if (error) {
             let campaign = new Campaign({ name: details.name, status: 'Error' })
             await campaign.save()
-            
+
             console.log(error.message);
         } else {
             let campaign = new Campaign({ name: details.name, status: 'Sent' })

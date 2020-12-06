@@ -1,7 +1,7 @@
 {
-  "name": "lexa_node",
+  "name": "bulk-mailer",
   "version": "1.0.0",
-  "description": "My Lexa Nodejs Template",
+  "description": "Sending bulk mail using smtp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

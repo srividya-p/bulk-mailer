@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"bulk-mailer.groups"},{"v":{"$numberInt":"2"},"unique":true,"key":{"name":{"$numberInt":"1"}},"name":"name_1","ns":"bulk-mailer.groups","background":true}],"uuid":"d3d9de0c0d564155882ad0898d5c2c3d","collectionName":"groups"}
